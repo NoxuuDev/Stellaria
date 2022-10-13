@@ -1,0 +1,13 @@
+name: Stellaria
+author: Pitrouflette
+main: fr.pitrouflette.stellariauhc.main
+
+version: 1.0
+commands:
+
+  uhc:
+    description: commands principale du plugin
+  uhc-staff:
+
+    description: modération du l'UHC
+    permission: uhc.mod.*
