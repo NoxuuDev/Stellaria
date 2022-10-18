@@ -1,2 +1,5 @@
 
 Besoin d'installer node_modules
+
+
+http://localhost:5500/posts pour le local base, a changer pour export sur un serveur node js attention avec le seleciton de base
