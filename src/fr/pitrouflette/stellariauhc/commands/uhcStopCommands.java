@@ -1,12 +1,16 @@
 package fr.pitrouflette.stellariauhc.commands;
 
 import fr.pitrouflette.stellariauhc.main;
+import fr.pitrouflette.stellariauhc.utils.TimeManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class uhcStopCommands implements CommandExecutor {
+
     public uhcStopCommands(main main) {}
+
+    TimeManager timer = new TimeManager();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {

@@ -4,19 +4,10 @@ main: fr.pitrouflette.stellariauhc.main
 
 version: 1.0
 commands:
-
-  uhc-start:
-    permission: uhc.mod.*
-
   revive:
     permission: uhc.mod.*
-
-  uhc-stop:
-    permission: uhc.mod.*
-
-  uhc:
+  suhc:
     description: commands principale du plugin
-
   uhc-staff:
     description: modération du l'UHC
     permission: uhc.mod.*
