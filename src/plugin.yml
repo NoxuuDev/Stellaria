@@ -1,0 +1,9 @@
+name: StellariaBW
+author: Pitrouflette
+main: fr.pitrouflette.stellariabedwars.main
+version: 1.0
+commands:
+
+  sbw:
+    description: bedwars commands
+    permission: stellaria.bw.*

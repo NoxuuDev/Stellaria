@@ -1,0 +1,42 @@
+#Plugin BedWars Stellaria v1.0
+
+ScoreBoard:
+  game:
+    Title: "&6Stellaria &eBedWars"
+    lines:
+      line1: "&6>&f&l&m                          &6<"
+      line2: "&1Bleu: {statu}"
+      line3: "&eJaune: {statu}"
+      line4: "&4Red: {statu}"
+      line5: "&2Green: {statu}"
+      line6: " "
+      line7: "&6kills : {kills}"
+      line8: "&6temps : {heurs}h {minutesm {secondes}s"
+      line9: "&6adresse : &f play.stellaria.fr?"
+      line10: "§6>&f&l&m                         &6<"
+      line11: "§8by Stellaria"
+  wainting:
+    Title: "&6Stellaria &eBedWars"
+    lines:
+      line1: "&6>&f&l&m                          &6<"
+      line2: "§6joueurs: {player_count}"
+      line3: "  "
+      line4: "&6adresse : &f play.stellaria.fr?"
+      line5: "§6>&f&l&m                         &6<"
+      line6: "§8by Stellaria"
+
+Items:
+  team:
+    name:
+      defaultName: "&6Team"
+      redName: "§4Team"
+      greenName: "§4Team"
+      blueName: "§4Team"
+      yellowName: "§eTeam"
+    lore:
+      - "Click droit pour choisir votre team"
+
+Inventory:
+  team:
+    name: "Team"
+    items: "null"
