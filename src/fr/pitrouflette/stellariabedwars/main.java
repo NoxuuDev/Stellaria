@@ -60,32 +60,18 @@ public class main extends JavaPlugin {
 
         File file = new File(this.getDataFolder(),"config.yml");
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
-
-        config.set("spawnX", 0);
-        config.set("spawnY", 0);
-        config.set("spawnZ", 0);
-        config.set("rules.max-player", 25);
-        config.set("rules.max-online", 30);
-        config.set("Timer.time", 0);
         try{
             config.save(file);
         }catch (IOException e){
             e.printStackTrace();
         }
 
+
         if(!ConfigUtils.configFileExist(this.getDataFolder(), "lang.yml")){
             ConfigUtils.createConfigFile("lang.yml");
         }
         File lang = new File(this.getDataFolder(),"lang.yml");
         FileConfiguration languages = YamlConfiguration.loadConfiguration(file);
-
-        languages.set("prefix", "&8[&6Setllaria&eBedWars&8]");
-        languages.set("join", "&7[&a+&7]&r");
-        languages.set("start-message", "");
-        languages.set("already-running-message", "");
-        languages.set("stop-message", "");
-        languages.set("already-stop-message", "");
-        languages.set("#SCOREBOARD", "");
         try{
             languages.save(lang);
         } catch (IOException e) {

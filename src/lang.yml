@@ -1,5 +1,17 @@
 #Plugin BedWars Stellaria v1.0 by Pitrouflette
 
+prefix: "[StallariaBW]"
+
+messages:
+  # Tous les messages suivents seront précédés par le préfix définit plus haut
+  game-started-messages: "&aLa partie est lancée !!"
+  game-already-started-messages: "&aLa partie est déjà lancée !"
+
+  game-stopped-message: "&4La partie a été stoppé."
+  game-already-stopped-message: "&4La n'est pas en cours."
+
+  argument-incorrect: "&4Argument incorrect.."
+
 ScoreBoard:
 
   # NE PAS AJOUTER DE LIGNES.
@@ -19,7 +31,7 @@ ScoreBoard:
       line9: "&6adresse : &f play.stellaria.fr?"
       line10: "§6>&f&l&m                         &6<"
       line11: "§8by Stellaria"
-  wainting:
+  waiting:
     Title: "&6Stellaria &eBedWars"
     lines:
       line1: "&6>&f&l&m                          &6<"
@@ -31,7 +43,10 @@ ScoreBoard:
 
 Items:
 
+  # Pour les lore, mettez des couleurs grâce au caractère "§" et non pas "&"
+
   #----------------GUI-----------------#
+
   GUI:
 
     border:

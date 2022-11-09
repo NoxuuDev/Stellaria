@@ -22,16 +22,17 @@ public class OnClickInventory implements Listener {
 
     @EventHandler
     public void PlayerInteract(PlayerInteractEvent ev){
-        if(ev.getAction().equals(Action.RIGHT_CLICK_AIR)){
+        if(ev.getAction().equals(Action.RIGHT_CLICK_AIR) && ev.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("Items.team.name.defaultName")){
             invManager.OpenTeamInv(ev.getPlayer());
         }
-        if(ev.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
+        if(ev.getAction().equals(Action.RIGHT_CLICK_BLOCK) && ev.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("Items.team.name.defaultName")){
             invManager.OpenTeamInv(ev.getPlayer());
         }
     }
 
     @EventHandler
     public void OnPlayerClickInventory(InventoryClickEvent ev){
+
         Player player = (Player) ev.getWhoClicked();
 
         if(ev.getView().getTitle().equals(langg.getString("Inventory.team.name"))){
