@@ -1,6 +1,10 @@
-#Plugin BedWars Stellaria v1.0
+#Plugin BedWars Stellaria v1.0 by Pitrouflette
 
 ScoreBoard:
+
+  # NE PAS AJOUTER DE LIGNES.
+  # LES ARGUMENTS ENTRE { } NE PEUVENT PAS ETRE ECRIS DE DIFFERENTES MANIERES.
+
   game:
     Title: "&6Stellaria &eBedWars"
     lines:
@@ -26,15 +30,52 @@ ScoreBoard:
       line6: "§8by Stellaria"
 
 Items:
+
+  #----------------GUI-----------------#
+  GUI:
+
+    border:
+      name:
+        defaultName: " "
+      lore:
+        - ""
+
+  #----------------TEAM-----------------#
+
   team:
     name:
       defaultName: "&6Team"
-      redName: "§4Team"
-      greenName: "§4Team"
-      blueName: "§4Team"
-      yellowName: "§eTeam"
     lore:
       - "Click droit pour choisir votre team"
+
+  red:
+    name:
+      defaultName: "&2Team rouge"
+    lore:
+      - "Vous faites partis de la team rouge"
+      - "Click droit pour choisir votre team"
+
+  green:
+    name:
+      defaultName: "&2Team rouge"
+    lore:
+      - "Vous faites parits de la team vert"
+      - "Click droit pour choisir votre team"
+
+  blue:
+    name:
+      defaultName: "&1Team bleu"
+    lore:
+      - "Vous faites partis de la team bleu"
+      - "Click droit pour choisir votre team"
+
+  yellow:
+    name:
+      defaultName: "&eTeam jaune"
+    lore:
+      - "Vous faites partis de la team jaune"
+      - "Click droit pour choisir votre team"
+
 
 Inventory:
   team:
