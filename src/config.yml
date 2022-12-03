@@ -1,4 +1,105 @@
+#Plugin BedWars Stellaria v1.0 by Pitrouflette
+#----------Config File----------#
 
 coordonnees:
-  spawn:
+  spawns:
     lobby:
+      x: 0
+      y: 150
+      z: 0
+
+  #the spawn and the homes spawners coordinates are calculated from the bed's location
+  #The "y" location doesn't work,changing his value wont affect anything.. His value is basicly defined on 10. To change it, please ask
+  bed:
+    map1:
+      red:
+        x: 0
+        y: 10
+        z: 0
+      blue:
+        x: 0
+        y: 150
+        z: 0
+      yellow:
+        x: 0
+        y: 150
+        z: 0
+      green:
+        x: 0
+        y: 150
+        z: 0
+    map2:
+      red:
+        x: 0
+        y: 150
+        z: 0
+      blue:
+        x: 0
+        y: 150
+        z: 0
+      yellow:
+        x: 0
+        y: 150
+        z: 0
+      green:
+        x: 0
+        y: 150
+        z: 0
+    map3:
+      red:
+        x: 0
+        y: 150
+        z: 0
+      blue:
+        x: 0
+        y: 150
+        z: 0
+      yellow:
+        x: 0
+        y: 150
+        z: 0
+      green:
+        x: 0
+        y: 150
+        z: 0
+    map4:
+      red:
+        x: 0
+        y: 150
+        z: 0
+      blue:
+        x: 0
+        y: 150
+        z: 0
+      yellow:
+        x: 0
+        y: 150
+        z: 0
+      green:
+        x: 0
+        y: 150
+        z: 0
+
+features:
+  items:
+    jetpack:
+      name: ""
+      lore:
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+      cooldown: 30 #time in seconds
+      fly-speed: 2
+      keep-on-died: "false"
+
+maps:
+  map1:
+    name: "world"
+  map2:
+    name: "world_the_end"
+  map3:
+    name: "bdw3"
+  map4:
+    name: "bdw4"

@@ -1,8 +1,15 @@
 #Plugin BedWars Stellaria v1.0 by Pitrouflette
+#----------Language File----------#
+  #use "&" to set colors
 
 prefix: "[StallariaBW]"
 
 messages:
+  title:
+    died:
+      1st: "{TimeLeft}" #This line cannot be modified
+      2sc: "avant de respawn"
+
   # Tous les messages suivents seront précédés par le préfix définit plus haut
   game-started-messages: "&aLa partie est lancée !!"
   game-already-started-messages: "&aLa partie est déjà lancée !"
@@ -10,12 +17,27 @@ messages:
   game-stopped-message: "&4La partie a été stoppé."
   game-already-stopped-message: "&4La n'est pas en cours."
 
+  tp-to-base: "vous avec été téléporté à votre base"
+
   argument-incorrect: "&4Argument incorrect.."
+
+  join: "&7[&a+&7]&r" # + player's name
+  quit: "&7[&a+&7]&r" # + player's name
+
+  diedM: "§e§l{PlayerName} §r§6est mort"
+
+  reload: "§aRealoded succefully"
+
+  team:
+    team-bleu-join: "Vous avec rejoins la team bleu"
+    team-red-join: "Vous avec rejoins la team rouge"
+    team-green-join: "Vous avec rejoins la team verte"
+    team-yellow-join: "Vous avec rejoins la team jaune"
 
 ScoreBoard:
 
-  # NE PAS AJOUTER DE LIGNES.
-  # LES ARGUMENTS ENTRE { } NE PEUVENT PAS ETRE ECRIS DE DIFFERENTES MANIERES.
+  # NE PAS AJOUTER DE LIGNES. (si il faut vraiment en ajouter, demandez moi, je peux le faire en 5min)
+  # LES ARGUMENTS ENTRE { } NE PEUVENT PAS ÊTRE ECRIS DE DIFFERENTES MANIERES.
 
   game:
     Title: "&6Stellaria &eBedWars"
@@ -31,6 +53,7 @@ ScoreBoard:
       line9: "&6adresse : &f play.stellaria.fr?"
       line10: "§6>&f&l&m                         &6<"
       line11: "§8by Stellaria"
+
   waiting:
     Title: "&6Stellaria &eBedWars"
     lines:
@@ -91,8 +114,25 @@ Items:
       - "Vous faites partis de la team jaune"
       - "Click droit pour choisir votre team"
 
+  #----------------ARMOR-----------------#
+  boots-name:
+    leather: "leatehr boots"
+    mail: "chain mail boots"
+    iron: "iron boots"
+    diams: "diamond boots"
+
+  leggins-name:
+    leather: "leatehr leggings"
+    mail: "chain mail leggings"
+    iron: "iron leggings"
+    diams: "diamond leggings"
+
+  chestplate-name:
+    leather: "leather chestplate"
+
+  helmet-name:
+    leather: "leather chestplate"
 
 Inventory:
   team:
     name: "Team"
-    items: "null"

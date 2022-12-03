@@ -1,9 +1,9 @@
 package fr.pitrouflette.stellariabedwars.listeners;
 
 import fr.pitrouflette.stellariabedwars.main;
-import fr.pitrouflette.stellariabedwars.utils.InventoryManager;
+import fr.pitrouflette.stellariabedwars.manager.InventoryManager;
+import fr.pitrouflette.stellariabedwars.manager.ItemsManager;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,21 +11,19 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import java.io.File;
-
 public class OnClickInventory implements Listener {
 
-    File lang = new File(main.getInstance().getDataFolder(),"lang.yml");
-    FileConfiguration langg = YamlConfiguration.loadConfiguration(lang);
+    FileConfiguration langg = main.getInstance().getLanguagesFile();
 
     InventoryManager invManager = new InventoryManager();
+    ItemsManager itemsManager = new ItemsManager();
 
     @EventHandler
     public void PlayerInteract(PlayerInteractEvent ev){
-        if(ev.getAction().equals(Action.RIGHT_CLICK_AIR) && ev.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("Items.team.name.defaultName")){
+        if(!(ev.getPlayer().getItemInHand().hasItemMeta())){return;}
+        if(ev.getAction().equals(Action.RIGHT_CLICK_AIR) && ev.getPlayer().getItemInHand().equals(itemsManager.getItemTeam())){
             invManager.OpenTeamInv(ev.getPlayer());
-        }
-        if(ev.getAction().equals(Action.RIGHT_CLICK_BLOCK) && ev.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("Items.team.name.defaultName")){
+        }else if(ev.getAction().equals(Action.RIGHT_CLICK_BLOCK) && ev.getPlayer().getItemInHand().equals(itemsManager.getItemTeam())) {
             invManager.OpenTeamInv(ev.getPlayer());
         }
     }
@@ -33,10 +31,24 @@ public class OnClickInventory implements Listener {
     @EventHandler
     public void OnPlayerClickInventory(InventoryClickEvent ev){
 
-        Player player = (Player) ev.getWhoClicked();
-
         if(ev.getView().getTitle().equals(langg.getString("Inventory.team.name"))){
             ev.setCancelled(true);
+            if(ev.getCurrentItem().equals(itemsManager.getBlue())){
+                main.getInstance().PlayerTeam.put(ev.getWhoClicked().getUniqueId(), "B");
+                ((Player) ev.getWhoClicked()).sendMessage(langg.getString("prefix") + langg.getString("messages.team.team-bleu-join"));
+            }
+            if(ev.getCurrentItem().equals(itemsManager.getRed())){
+                main.getInstance().PlayerTeam.put(ev.getWhoClicked().getUniqueId(), "R");
+                ((Player) ev.getWhoClicked()).sendMessage(langg.getString("prefix") + langg.getString("messages.team.team-red-join"));
+            }
+            if(ev.getCurrentItem().equals(itemsManager.getGreen())){
+                main.getInstance().PlayerTeam.put(ev.getWhoClicked().getUniqueId(), "G");
+                ((Player) ev.getWhoClicked()).sendMessage(langg.getString("prefix") + langg.getString("messages.team.team-green-join"));
+            }
+            if(ev.getCurrentItem().equals(itemsManager.getYellow())){
+                main.getInstance().PlayerTeam.put(ev.getWhoClicked().getUniqueId(), "Y");
+                ((Player) ev.getWhoClicked()).sendMessage(langg.getString("prefix") + langg.getString("messages.team.team-yellow-join"));
+            }
         }
     }
 }

@@ -1,21 +1,16 @@
-package fr.pitrouflette.stellariabedwars.utils;
+package fr.pitrouflette.stellariabedwars.manager;
 
 import fr.pitrouflette.stellariabedwars.main;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-
-import java.io.File;
 
 public class InventoryManager {
 
     ItemsManager itemsManager = new ItemsManager();
 
-    File lang = new File(main.getInstance().getDataFolder(),"lang.yml");
-    FileConfiguration langg = YamlConfiguration.loadConfiguration(lang);
+    FileConfiguration langg = main.getInstance().getLanguagesFile();
 
     public void OpenTeamInv(Player player){
         Inventory inv = Bukkit.createInventory(null, 9*3 ,langg.getString("Inventory.team.name").replace("&", "§"));
@@ -41,6 +36,7 @@ public class InventoryManager {
         inv.setItem(17, itemsManager.getGUIBorder());
         inv.setItem(18, itemsManager.getGUIBorder());
         inv.setItem(19, itemsManager.getGUIBorder());
+        inv.setItem(20, itemsManager.getGUIBorder());
         inv.setItem(21, itemsManager.getGUIBorder());
         inv.setItem(22, itemsManager.getGUIBorder());
         inv.setItem(23, itemsManager.getGUIBorder());

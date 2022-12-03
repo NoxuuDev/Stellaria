@@ -1,18 +1,76 @@
-package fr.pitrouflette.stellariabedwars.utils;
+package fr.pitrouflette.stellariabedwars.manager;
 
 import fr.pitrouflette.stellariabedwars.main;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class TimeManager extends BukkitRunnable {
+
+    FileConfiguration langg = main.getInstance().getLanguagesFile();
+    FileConfiguration configs = main.getInstance().getConfigFile();
+
+    StartManager startManager = new StartManager();
+
+    ScoreboardManager manager = Bukkit.getScoreboardManager();
 
     public int seconds = 0;
     public int minutes = 0;
     public int hours = 0;
 
+    public Map<UUID, Integer> PlayerDethCuntDown = new HashMap<UUID, Integer>();
+
+    Scoreboard board = manager.getNewScoreboard();
+
+    Team bleu = board.registerNewTeam("bleu");
+    Team green = board.registerNewTeam("green");
+    Team yellow = board.registerNewTeam("yellow");
+    Team red = board.registerNewTeam("red");
+
+    @SuppressWarnings("deprecation")
+    public void initTeam(Player player, String str){
+
+        switch (str) {
+            case "B" -> bleu.addPlayer(player);
+            case "R" -> red.addPlayer(player);
+            case "G" -> green.addPlayer(player);
+            case "Y" -> yellow.addPlayer(player);
+        }
+
+        bleu.setAllowFriendlyFire(false);
+        bleu.setPrefix("§1");
+        bleu.setSuffix("§r");
+        bleu.setCanSeeFriendlyInvisibles(true);
+        bleu.setAllowFriendlyFire(false);
+
+        green.setAllowFriendlyFire(false);
+        green.setPrefix("§2");
+        green.setSuffix("§r");
+        green.setCanSeeFriendlyInvisibles(true);
+        green.setAllowFriendlyFire(false);
+
+        yellow.setAllowFriendlyFire(false);
+        yellow.setPrefix("§e");
+        yellow.setSuffix("§r");
+        yellow.setCanSeeFriendlyInvisibles(true);
+        yellow.setAllowFriendlyFire(false);
+
+        red.setAllowFriendlyFire(false);
+        red.setPrefix("§4");
+        red.setSuffix("§r");
+        red.setCanSeeFriendlyInvisibles(true);
+        red.setAllowFriendlyFire(false);
+    }
+
     @Override
+    @SuppressWarnings("deprecation")
     public void run(){
 
         if(minutes > 180){
@@ -34,8 +92,32 @@ public class TimeManager extends BukkitRunnable {
             minutes = 0;
         }
 
-        updateScoreBoard();
 
+        for(Player online : Bukkit.getOnlinePlayers()){
+            if(online.getGameMode().equals(GameMode.SPECTATOR)){
+                if(!PlayerDethCuntDown.containsKey(online.getUniqueId())){
+                    PlayerDethCuntDown.put(online.getUniqueId(), 5);
+                }else{
+                    PlayerDethCuntDown.put(online.getUniqueId(), PlayerDethCuntDown.get(online.getUniqueId()) - 1);
+                }
+
+            }
+        }
+        for(Player online : Bukkit.getOnlinePlayers()){
+            if(PlayerDethCuntDown.containsKey(online.getUniqueId())){
+                if(PlayerDethCuntDown.get(online.getUniqueId()) > 0){
+                    online.resetTitle();
+                    online.sendTitle( PlayerDethCuntDown.get(online.getUniqueId()) + "s", "before respawning");
+                }
+                if(PlayerDethCuntDown.get(online.getUniqueId()) == 0){
+                    PlayerDethCuntDown.remove(online.getUniqueId());
+                    online.setGameMode(GameMode.SURVIVAL);
+                    startManager.tpPlayerBase(online);
+                    online.resetTitle();
+                }
+            }
+        }
+        updateScoreBoard();
     }
 
     public void updateScoreBoard(){
@@ -43,7 +125,7 @@ public class TimeManager extends BukkitRunnable {
         for(Player online : Bukkit.getOnlinePlayers()){
 
             if(main.getInstance().run){
-                ScoreboardManager manager = Bukkit.getScoreboardManager();
+
                 assert manager != null;
                 Scoreboard board = manager.getNewScoreboard();
                 Objective objective = board.registerNewObjective("title", "sfdg");
@@ -95,10 +177,9 @@ public class TimeManager extends BukkitRunnable {
 
             }else{
 
-                ScoreboardManager manager = Bukkit.getScoreboardManager();
                 assert manager != null;
-                Scoreboard board = manager.getNewScoreboard();
-                Objective objective = board.registerNewObjective("title", "null");
+                Scoreboard waitBoard = manager.getNewScoreboard();
+                Objective objective = waitBoard.registerNewObjective("title", "null");
                 objective.setDisplayName("§6Stellaria §eBedWars");
                 objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
@@ -114,7 +195,7 @@ public class TimeManager extends BukkitRunnable {
                 Score dev = objective.getScore("§6dev : §fPitrouflette");
                 dev.setScore(7);
 
-                Score adresse = objective.getScore("§6adresse : §f" + Bukkit.getServer().getIp());
+                Score adresse = objective.getScore("§6adresse : §f play.stellaria.fr");
                 adresse.setScore(6);
 
                 Score blank1 = objective.getScore("§6>§f§l§m                   §6<");
@@ -123,7 +204,7 @@ public class TimeManager extends BukkitRunnable {
                 Score credits = objective.getScore("§8by Stellaria");
                 credits.setScore(4);
 
-                online.setScoreboard(board);
+                online.setScoreboard(waitBoard);
 
             }
         }

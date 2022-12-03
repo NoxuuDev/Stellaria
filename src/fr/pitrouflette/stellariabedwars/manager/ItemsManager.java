@@ -1,26 +1,25 @@
-package fr.pitrouflette.stellariabedwars.utils;
+package fr.pitrouflette.stellariabedwars.manager;
 
 import fr.pitrouflette.stellariabedwars.main;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.io.File;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ItemsManager {
 
-    File lang = new File(main.getInstance().getDataFolder(),"lang.yml");
-    FileConfiguration langg = YamlConfiguration.loadConfiguration(lang);
+
+    FileConfiguration langg = main.getInstance().getLanguagesFile();
 
                                                                     //-----------GUI----------//
 
     public ItemStack getGUIBorder(){
 
-        ItemStack GuiBorder = new ItemStack(Material.WOOL);
+        ItemStack GuiBorder = new ItemStack(Material.STAINED_GLASS_PANE);
         ItemMeta GuiBorderM = GuiBorder.getItemMeta();
         GuiBorderM.setDisplayName(langg.getString("Items.GUI.border.name.defaultName").replace("&", "§"));
         GuiBorderM.setLore(langg.getStringList("Items.GUI.border.lore"));
@@ -97,4 +96,39 @@ public class ItemsManager {
 
         return teamYellow;
     }
+                                                        //-----------TEAM----------//
+
+    public ItemStack createItemBlue(Material leatherPiece, String displayName) {
+        ItemStack item = new ItemStack(leatherPiece);
+        LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+        meta.setDisplayName(displayName);
+        meta.setColor(Color.BLUE);
+        item.setItemMeta(meta);
+        return item;
+    }
+    public ItemStack createItemGreen(Material leatherPiece, String displayName) {
+        ItemStack item = new ItemStack(leatherPiece);
+        LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+        meta.setDisplayName(displayName);
+        meta.setColor(Color.GREEN);
+        item.setItemMeta(meta);
+        return item;
+    }
+    public ItemStack createItemRed(Material leatherPiece, String displayName) {
+        ItemStack item = new ItemStack(leatherPiece);
+        LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+        meta.setDisplayName(displayName);
+        meta.setColor(Color.RED);
+        item.setItemMeta(meta);
+        return item;
+    }
+    public ItemStack createItemYellow(Material leatherPiece, String displayName) {
+        ItemStack item = new ItemStack(leatherPiece);
+        LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
+        meta.setDisplayName(displayName);
+        meta.setColor(Color.YELLOW);
+        item.setItemMeta(meta);
+        return item;
+    }
+
 }

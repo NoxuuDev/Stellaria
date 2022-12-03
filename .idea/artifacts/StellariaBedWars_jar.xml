@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="StellariaBedWars:jar">
-    <output-path>$USER_HOME$/OneDrive/Desktop/Dev/Serveur AmriamaMC test/plugins</output-path>
+    <output-path>$USER_HOME$/OneDrive/Documents/folder/Dev/Serveur AmriamaMC test/plugins</output-path>
     <root id="archive" name="StellariaBedWars.jar">
       <element id="module-output" name="StellariaBedWars" />
       <element id="extracted-dir" path="$USER_HOME$/Downloads/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar" path-in-jar="/" />
