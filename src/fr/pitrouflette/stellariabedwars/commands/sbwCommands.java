@@ -14,7 +14,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class sbwCommands implements CommandExecutor {
-    public sbwCommands(main main) {}
 
     FileConfiguration langg = main.getInstance().getLanguagesFile();
     FileConfiguration configs = main.getInstance().getConfigFile();
@@ -24,6 +23,8 @@ public class sbwCommands implements CommandExecutor {
     TimeManager timer = new TimeManager();
     StartManager startManager = new StartManager();
     ItemsManager itemsManager = new ItemsManager();
+
+    public sbwCommands(main main) {}
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {

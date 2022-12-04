@@ -4,18 +4,20 @@ import fr.pitrouflette.stellariabedwars.main;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class TimeManager extends BukkitRunnable {
 
-    FileConfiguration langg = main.getInstance().getLanguagesFile();
-    FileConfiguration configs = main.getInstance().getConfigFile();
+    public FileConfiguration langg = main.getInstance().languages;
+    public FileConfiguration configs = main.getInstance().getConfigFile();
 
     StartManager startManager = new StartManager();
 
