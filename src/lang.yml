@@ -10,7 +10,7 @@ messages:
       1st: "{TimeLeft}" #This line cannot be modified
       2sc: "avant de respawn"
 
-  # Tous les messages suivents seront précédés par le préfix définit plus haut
+  # Tous les messages suivants seront précédés par le préfix définit plus haut
   game-started-messages: "&aLa partie est lancée !!"
   game-already-started-messages: "&aLa partie est déjà lancée !"
 
