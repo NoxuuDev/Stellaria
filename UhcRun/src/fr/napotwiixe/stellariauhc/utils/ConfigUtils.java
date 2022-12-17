@@ -29,7 +29,8 @@ public class ConfigUtils {
     public static boolean saveConfigFile(File folder, String name)
     {
         File file = new File(folder,name);
-        FileConfiguration config = new YamlConfiguration().loadConfiguration(file);
+        new YamlConfiguration();
+        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
         if(file.exists()){
             try{
