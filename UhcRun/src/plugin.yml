@@ -1,0 +1,13 @@
+name: Stellaria
+author: napotwiixe
+main: fr.napotwiixe.stellariauhc.main
+
+version: 1.0
+commands:
+  revive:
+    permission: uhc.mod.*
+  suhc:
+    description: commands principale du plugin
+  uhc-staff:
+    description: modération du l'UHC
+    permission: uhc.mod.*
