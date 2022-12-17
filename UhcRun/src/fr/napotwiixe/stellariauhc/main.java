@@ -23,6 +23,8 @@ public class main extends JavaPlugin{
     public Map<UUID, Integer> PlayerKill = new HashMap<UUID, Integer>();
     public Map<UUID, Location> PlayerDeathLoc = new HashMap<UUID, Location>();
 
+    public boolean run;
+
     public static main instance;
 
     @Override
@@ -35,7 +37,7 @@ public class main extends JavaPlugin{
             PlayerKill.put(online.getUniqueId(), 0);
         }
 
-        getCommand("suhc").setExecutor(new suhcCommands());
+        getCommand("suhc").setExecutor(new suhcCommands(this));
 
         Bukkit.getPluginManager().registerEvents(new OnJoin(), this);
         Bukkit.getPluginManager().registerEvents(new OnDeath(), this);
