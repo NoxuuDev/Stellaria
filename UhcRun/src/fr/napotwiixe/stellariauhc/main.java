@@ -16,24 +16,25 @@ import fr.napotwiixe.stellariauhc.commands.*;
 import fr.napotwiixe.stellariauhc.listeners.OnDeath;
 import fr.napotwiixe.stellariauhc.listeners.OnJoin;
 import fr.napotwiixe.stellariauhc.utils.ConfigUtils;
-public class main extends JavaPlugin{
-    
+public class main extends JavaPlugin {
+
     public static ArrayList<String> freezed_player = new ArrayList<>();
 
     public Map<UUID, Integer> PlayerKill = new HashMap<UUID, Integer>();
     public Map<UUID, Location> PlayerDeathLoc = new HashMap<UUID, Location>();
 
-    public boolean run;
-
     public static main instance;
 
+    public boolean run = false;
+
     @Override
-    public void onEnable() {
+    public void onEnable(){
+
         instance = this;
 
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamerul naturalRegeneration false");
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false");
 
-        for (Player online : Bukkit.getOnlinePlayers()) {
+        for(Player online : Bukkit.getOnlinePlayers()){
             PlayerKill.put(online.getUniqueId(), 0);
         }
 
@@ -42,11 +43,32 @@ public class main extends JavaPlugin{
         Bukkit.getPluginManager().registerEvents(new OnJoin(), this);
         Bukkit.getPluginManager().registerEvents(new OnDeath(), this);
 
+
         if(!ConfigUtils.configFileExist(this.getDataFolder(), "config.yml")){
             ConfigUtils.createConfigFile("config.yml");
         }
+
+        File file = new File(this.getDataFolder(),"config.yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+        config.set("prefix", "&8[&6Setllaria&eUHC&8]");
+        config.set("join", "&7[&a+&7]&r");
+        config.set("spawnX", 0);
+        config.set("spawnY", 0);
+        config.set("spawnZ", 0);
+        config.set("rules.max-player", 25);
+        config.set("rules.max-online", 30);
+        config.set("Timer.time", 0);
+        try{
+            config.save(file);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        if(!ConfigUtils.configFileExist(this.getDataFolder(), "languages.yml")){
+            ConfigUtils.createConfigFile("languages.yml");
+        }
         File lang = new File(this.getDataFolder(),"languages.yml");
-        FileConfiguration languages = YamlConfiguration.loadConfiguration(getFile());
+        FileConfiguration languages = YamlConfiguration.loadConfiguration(file);
         languages.set("prefix", "&8[&6Setllaria&eUHC&8]");
         languages.set("join", "&7[&a+&7]&r");
         languages.set("start-message", "");
@@ -65,5 +87,4 @@ public class main extends JavaPlugin{
     public static main getInstance() {
         return instance;
     }
-
 }
