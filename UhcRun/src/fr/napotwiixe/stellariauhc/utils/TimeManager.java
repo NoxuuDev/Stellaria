@@ -101,7 +101,7 @@ public class TimeManager extends BukkitRunnable {
                 Score troue2 = objective.getScore("       ");
                 troue2.setScore(8);
 
-                Score dev = objective.getScore("§6dev : §fPitrouflette");
+                Score dev = objective.getScore("§6dev : §fNapoTwiixe");
                 dev.setScore(7);
 
                 Score adresse = objective.getScore("§6adresse : §f" + Bukkit.getServer().getIp());
@@ -109,9 +109,6 @@ public class TimeManager extends BukkitRunnable {
 
                 Score blank1 = objective.getScore("§6>§f§l§m                   §6<");
                 blank1.setScore(5);
-
-                Score credits = objective.getScore("§8.gg/pitrouflette");
-                credits.setScore(4);
 
                 online.setScoreboard(board);
 
